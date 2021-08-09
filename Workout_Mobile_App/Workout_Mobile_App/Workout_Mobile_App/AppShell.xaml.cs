@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using Workout_Mobile_App.Views;
+using Xamarin.Forms;
 
 namespace Workout_Mobile_App
 {
@@ -7,6 +8,7 @@ namespace Workout_Mobile_App
         public AppShell()
         {
             InitializeComponent();
+            Routing.RegisterRoute(nameof(WorkoutPage), typeof(WorkoutPage));
         }
     }
 }
