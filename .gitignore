@@ -1,0 +1,10 @@
+# result folder
+*.vs
+**/Workout-Mobile-App/Workout-Mobile-App/Workout-Mobile-App/bin
+**/Workout-Mobile-App/Workout-Mobile-App/Workout-Mobile-App/obj
+**/Workout-Mobile-App/Workout-Mobile-App/Workout-Mobile-App.Android/Assets
+**/Workout-Mobile-App/Workout-Mobile-App/Workout-Mobile-App.Android/bin
+**/Workout-Mobile-App/Workout-Mobile-App/Workout-Mobile-App.Android/obj
+**/Workout-Mobile-App/Workout-Mobile-App/Workout-Mobile-App.iOS/Assets.xcassets
+**/Workout-Mobile-App/Workout-Mobile-App/Workout-Mobile-App.iOS/bin
+**/Workout-Mobile-App/Workout-Mobile-App/Workout-Mobile-App.iOS/obj
