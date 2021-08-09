@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FF53DC5F-3EB2-44DC-8076-E2CF119B599C}</ProjectGuid>
+    <ProjectGuid>{A081B52A-F5DA-4FD5-9674-ED2C56515CB9}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{6968b3a4-1835-46a3-ac5c-1ae33b475983}</TemplateGuid>
     <OutputType>Library</OutputType>
@@ -88,7 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Workout_Mobile_App\Workout_Mobile_App.csproj">
-      <Project>{1BCDD117-20F1-44C3-A1F2-4BC224026016}</Project>
+      <Project>{B3772CEA-D202-4785-B0EA-83FAF24E3031}</Project>
       <Name>Workout_Mobile_App</Name>
     </ProjectReference>
   </ItemGroup>
