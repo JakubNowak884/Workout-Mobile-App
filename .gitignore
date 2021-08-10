@@ -1,10 +1,8 @@
 # result folder
 *.vs
-**/Workout_Mobile_App/Workout_Mobile_App/Workout_Mobile_App/bin
-**/Workout_Mobile_App/Workout_Mobile_App/Workout_Mobile_App/obj
-**/Workout_Mobile_App/Workout_Mobile_App/Workout_Mobile_App.Android/Assets
-**/Workout_Mobile_App/Workout_Mobile_App/Workout_Mobile_App.Android/bin
-**/Workout_Mobile_App/Workout_Mobile_App/Workout_Mobile_App.Android/obj
-**/Workout_Mobile_App/Workout_Mobile_App/Workout_Mobile_App.iOS/Assets.xcassets
-**/Workout_Mobile_App/Workout_Mobile_App/Workout_Mobile_App.iOS/bin
-**/Workout_Mobile_App/Workout_Mobile_App/Workout_Mobile_App.iOS/obj
+**/Workout_Mobile_App/Workout_Mobile_App/bin
+**/Workout_Mobile_App/Workout_Mobile_App/obj
+**/Workout_Mobile_App/Workout_Mobile_App.Android/bin
+**/Workout_Mobile_App/Workout_Mobile_App.Android/obj
+**/Workout_Mobile_App/Workout_Mobile_App.iOS/bin
+**/Workout_Mobile_App/Workout_Mobile_App.iOS/obj

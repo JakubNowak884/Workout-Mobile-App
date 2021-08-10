@@ -5,8 +5,8 @@
        x:Class="Workout_Mobile_App.AppShell">
     <!-- Display a bottom tab bar containing two tabs -->
     <TabBar>
-        <ShellContent Title="Notes"
-                      Icon="icon_feed.png"
+        <ShellContent Title="Workout"
+                      Icon="icon_workout.png"
                       ContentTemplate="{DataTemplate views:MainPage}" />
         <ShellContent Title="About"
                       Icon="icon_about.png"
