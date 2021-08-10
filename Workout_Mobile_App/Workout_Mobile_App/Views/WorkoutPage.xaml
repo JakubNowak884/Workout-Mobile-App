@@ -3,11 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Workout_Mobile_App.Views.WorkoutPage"
              Title="Note Entry">
+
+    <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Change name"/>
+    <ToolbarItem Text="Add day"/>
+    </ContentPage.ToolbarItems>
+
     <!-- Layout children vertically -->
     <StackLayout Margin="20">
-        <Editor Placeholder="Enter your note"
-                Text="{Binding Text}"
-                HeightRequest="100" />
+        <Label Text ="Day 1"
+                FontSize="Large"
+                FontAttributes="Bold"/>
         <!-- Layout children in two columns -->
         <Grid ColumnDefinitions="*,*">
             <Button Text="Save"
