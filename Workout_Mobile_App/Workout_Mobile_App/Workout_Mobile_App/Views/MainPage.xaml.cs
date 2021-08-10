@@ -14,29 +14,13 @@ namespace Workout_Mobile_App.Views
             InitializeComponent();
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
 
-            var notes = new List<Workout>();
-
-            // Create a Note object from each file.
-            var files = Directory.EnumerateFiles(App.FolderPath, "*.notes.txt");
-            foreach (var filename in files)
-            {
-                notes.Add(new Workout
-                {
-                    Filename = filename,
-                    Text = File.ReadAllText(filename),
-                    Date = File.GetCreationTime(filename)
-                });
-            }
-
-            // Set the data source for the CollectionView to a
-            // sorted collection of notes.
-            collectionView.ItemsSource = notes
-                .OrderBy(d => d.Date)
-                .ToList();
+            // Retrieve all the notes from the database, and set them as the
+            // data source for the CollectionView.
+            collectionView.ItemsSource = await App.Database.GetNotesAsync();
         }
 
         async void OnAddClicked(object sender, EventArgs e)
@@ -49,9 +33,9 @@ namespace Workout_Mobile_App.Views
         {
             if (e.CurrentSelection != null)
             {
-                // Navigate to the NoteEntryPage, passing the filename as a query parameter.
+                // Navigate to the NoteEntryPage, passing the ID as a query parameter.
                 Workout note = (Workout)e.CurrentSelection.FirstOrDefault();
-                await Shell.Current.GoToAsync($"{nameof(WorkoutPage)}?{nameof(WorkoutPage.ItemId)}={note.Filename}");
+                await Shell.Current.GoToAsync($"{nameof(WorkoutPage)}?{nameof(WorkoutPage.ItemId)}={note.ID.ToString()}");
             }
         }
     }

@@ -1,17 +1,30 @@
 ﻿using System;
 using System.IO;
+using Workout_Mobile_App.Data;
 using Xamarin.Forms;
 
 namespace Workout_Mobile_App
 {
     public partial class App : Application
     {
-        public static string FolderPath { get; private set; }
+        static WorkoutDatabase database;
+
+        // Create the database connection as a singleton.
+        public static WorkoutDatabase Database
+        {
+            get
+            {
+                if (database == null)
+                {
+                    database = new WorkoutDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Notes.db3"));
+                }
+                return database;
+            }
+        }
 
         public App()
         {
             InitializeComponent();
-            FolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
             MainPage = new AppShell();
         }
 
