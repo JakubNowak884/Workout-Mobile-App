@@ -6,19 +6,17 @@
     <!-- Add an item to the toolbar -->
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="New"
-                     Clicked="OnAddClicked" />
+                     Clicked="OnAddClicked"/>
     </ContentPage.ToolbarItems>
 
-    <!-- Display notes in a list -->
     <CollectionView x:Name="collectionView"
                     Margin="20"
-                    SelectionMode="Single"
-                    SelectionChanged="OnSelectionChanged">
+                    SelectionMode="Single">
         <CollectionView.ItemsLayout>
             <LinearItemsLayout Orientation="Vertical"
                                ItemSpacing="10" />
         </CollectionView.ItemsLayout>
-        <!-- Define the appearance of each item in the list -->
+
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <StackLayout>
@@ -31,4 +29,5 @@
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>
+    
 </ContentPage>

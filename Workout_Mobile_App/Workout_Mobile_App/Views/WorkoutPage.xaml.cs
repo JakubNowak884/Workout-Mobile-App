@@ -24,6 +24,15 @@ namespace Workout_Mobile_App.Views
             BindingContext = new Workout();
         }
 
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            // Retrieve all the notes from the database, and set them as the
+            // data source for the CollectionView.
+            collectionView.ItemsSource = await App.Database.GetNotesAsync();
+        }
+
         async void LoadNote(string itemId)
         {
             try
@@ -39,10 +48,15 @@ namespace Workout_Mobile_App.Views
             }
         }
 
+        async void AddDay(object sender, EventArgs e)
+        {
+            var note = (Workout)BindingContext;
+            note.Text = "Day 1";
+            await App.Database.SaveNoteAsync(note);
+        }
         async void OnSaveButtonClicked(object sender, EventArgs e)
         {
             var note = (Workout)BindingContext;
-            note.Date = DateTime.UtcNow;
             if (!string.IsNullOrWhiteSpace(note.Text))
             {
                 await App.Database.SaveNoteAsync(note);
