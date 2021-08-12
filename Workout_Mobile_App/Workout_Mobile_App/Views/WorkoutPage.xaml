@@ -12,7 +12,8 @@
 
     <CollectionView x:Name="collectionView"
                     Margin="20"
-                    SelectionMode="Single">
+                    SelectionMode="Single"
+                    SelectionChanged="DeleteWorkout">
         <CollectionView.ItemsLayout>
             <LinearItemsLayout Orientation="Vertical"
                                ItemSpacing="10" />

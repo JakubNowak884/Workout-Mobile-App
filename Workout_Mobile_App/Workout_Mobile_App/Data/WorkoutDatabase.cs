@@ -31,16 +31,7 @@ namespace Workout_Mobile_App.Data
 
         public Task<int> SaveNoteAsync(Workout note)
         {
-            if (note.ID != 0)
-            {
-                // Update an existing note.
-                return database.UpdateAsync(note);
-            }
-            else
-            {
-                // Save a new note.
-                return database.InsertAsync(note);
-            }
+            return database.InsertAsync(note);
         }
 
         public Task<int> DeleteNoteAsync(Workout note)

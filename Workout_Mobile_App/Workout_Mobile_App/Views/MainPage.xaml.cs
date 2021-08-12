@@ -28,15 +28,5 @@ namespace Workout_Mobile_App.Views
             // Navigate to the NoteEntryPage, without passing any data.
             await Shell.Current.GoToAsync(nameof(WorkoutPage));
         }
-
-        async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (e.CurrentSelection != null)
-            {
-                // Navigate to the NoteEntryPage, passing the ID as a query parameter.
-                Workout note = (Workout)e.CurrentSelection.FirstOrDefault();
-                await Shell.Current.GoToAsync($"{nameof(WorkoutPage)}?{nameof(WorkoutPage.ItemId)}={note.ID.ToString()}");
-            }
-        }
     }
 }
