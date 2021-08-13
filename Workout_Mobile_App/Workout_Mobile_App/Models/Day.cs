@@ -7,5 +7,7 @@ namespace Workout_Mobile_App.Models
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
+        public string DayText { get; set; }
+        public int WorkoutKey { get; set; }
     }
 }

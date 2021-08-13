@@ -2,23 +2,37 @@
 using System.IO;
 using Workout_Mobile_App.Data;
 using Xamarin.Forms;
+using System.Collections.Generic;
 
 namespace Workout_Mobile_App
 {
     public partial class App : Application
     {
-        static WorkoutDatabase database;
+        static WorkoutDatabase databaseWorkout;
+        static DayDatabase databaseDay;
 
         // Create the database connection as a singleton.
-        public static WorkoutDatabase Database
+        public static WorkoutDatabase DatabaseWorkout
         {
             get
             {
-                if (database == null)
+                if (databaseWorkout == null)
                 {
-                    database = new WorkoutDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Notes.db3"));
+                    databaseWorkout = new WorkoutDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "DatabaseWorkout.db3"));
                 }
-                return database;
+                return databaseWorkout;
+            }
+        }
+
+        public static DayDatabase DatabaseDay
+        {
+            get
+            {
+                if (databaseDay == null)
+                {
+                    databaseDay = new DayDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "DatabaseDay.db3"));
+                }
+                return databaseDay;
             }
         }
 

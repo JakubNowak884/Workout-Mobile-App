@@ -13,19 +13,15 @@ namespace Workout_Mobile_App.Views
         {
             InitializeComponent();
         }
-
         protected override async void OnAppearing()
         {
             base.OnAppearing();
 
-            // Retrieve all the notes from the database, and set them as the
-            // data source for the CollectionView.
-            collectionView.ItemsSource = await App.Database.GetNotesAsync();
+            collectionView.ItemsSource = await App.DatabaseWorkout.GetNotesAsync();
         }
 
         async void OnAddClicked(object sender, EventArgs e)
         {
-            // Navigate to the NoteEntryPage, without passing any data.
             await Shell.Current.GoToAsync(nameof(WorkoutPage));
         }
     }

@@ -2,7 +2,8 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Workout_Mobile_App.Views.WorkoutPage">
+             x:Class="Workout_Mobile_App.Views.WorkoutPage"
+             x:Name="contentPage">
 
 <ContentPage.ToolbarItems>
         <ToolbarItem Text="Change name"/>
@@ -22,7 +23,7 @@
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <StackLayout>
-                    <Label Text="{Binding Text}"
+                    <Label Text="{Binding DayText}"
                            FontSize="Title"/>
                     <Button Text="Add exercise"/>
                 </StackLayout>
