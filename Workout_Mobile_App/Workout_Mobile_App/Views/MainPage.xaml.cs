@@ -17,12 +17,17 @@ namespace Workout_Mobile_App.Views
         {
             base.OnAppearing();
 
-            collectionView.ItemsSource = await App.DatabaseWorkout.GetNotesAsync();
+            collectionView.ItemsSource = await App.DatabaseWorkout.GetWorkoutsAsync();
         }
 
         async void OnAddClicked(object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync(nameof(WorkoutPage));
+        }
+
+        async void WorkoutSelected(object sender, SelectionChangedEventArgs e)
+        {
+            bool answer = await DisplayAlert("Question?", "Would you like to play a game", "Yes", "No");
         }
     }
 }

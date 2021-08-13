@@ -6,7 +6,8 @@
              x:Name="contentPage">
 
 <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Change name"/>
+        <ToolbarItem Text="Change name"
+                     Clicked="ChangeName"/>
         <ToolbarItem Text="Add day"
                      Clicked="AddDay"/>
     </ContentPage.ToolbarItems>

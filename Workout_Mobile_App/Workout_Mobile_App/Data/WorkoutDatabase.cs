@@ -15,13 +15,13 @@ namespace Workout_Mobile_App.Data
             database.CreateTableAsync<Workout>().Wait();
         }
 
-        public Task<List<Workout>> GetNotesAsync()
+        public Task<List<Workout>> GetWorkoutsAsync()
         {
             //Get all notes.
             return database.Table<Workout>().ToListAsync();
         }
 
-        public Task<Workout> GetNoteAsync(int id)
+        public Task<Workout> GetWorkoutAsync(int id)
         {
             // Get a specific note.
             return database.Table<Workout>()
@@ -29,18 +29,23 @@ namespace Workout_Mobile_App.Data
                             .FirstOrDefaultAsync();
         }
 
-        public Task<int> SaveNoteAsync(Workout note)
+        public Task<int> UpdateWorkoutAsync(Workout workout)
         {
-            return database.InsertAsync(note);
+            return database.UpdateAsync(workout);
         }
 
-        public Task<int> DeleteNoteAsync(Workout note)
+        public Task<int> SaveWorkoutAsync(Workout workout)
+        {
+            return database.InsertAsync(workout);
+        }
+
+        public Task<int> DeleteWorkoutAsync(Workout workout)
         {
             // Delete a note.
-            return database.DeleteAsync(note);
+            return database.DeleteAsync(workout);
         }
 
-        public Task<int> GetLastInsertID()
+        public Task<int> GetLastInsertedID()
         {
             return database.Table<Workout>().CountAsync();
         }

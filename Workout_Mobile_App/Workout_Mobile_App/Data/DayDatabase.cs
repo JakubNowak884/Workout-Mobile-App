@@ -31,6 +31,10 @@ namespace Workout_Mobile_App.Data
                             .Where(i => i.ID == id)
                             .FirstOrDefaultAsync();
         }
+        public Task<int> UpdateDayAsync(Day day)
+        {
+            return database.UpdateAsync(day);
+        }
 
         public Task<int> SaveDayAsync(Day day)
         {
@@ -39,10 +43,11 @@ namespace Workout_Mobile_App.Data
 
         public Task<int> DeleteDayAsync(Day day)
         {
+
             return database.DeleteAsync(day);
         }
 
-        public Task<int> GetLastInsertID(int id)
+        public Task<int> GetLastInsertedID(int id)
         {
             return database.Table<Day>().Where(i => i.WorkoutKey == id).CountAsync();
         }
