@@ -9,6 +9,8 @@ namespace Workout_Mobile_App
         {
             InitializeComponent();
             Routing.RegisterRoute(nameof(WorkoutPage), typeof(WorkoutPage));
+            Routing.RegisterRoute(nameof(DayPage), typeof(DayPage));
+            Routing.RegisterRoute(nameof(ExercisePage), typeof(ExercisePage));
         }
     }
 }

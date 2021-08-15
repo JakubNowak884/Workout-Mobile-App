@@ -15,9 +15,9 @@ namespace Workout_Mobile_App.Data
             database.CreateTableAsync<Day>().Wait();
         }
 
-        public Task<List<Day>> GetDaysAsync(int id)
+        public Task<List<Day>> GetDaysAsync(int workoutId)
         {
-            return database.Table<Day>().Where(i => i.WorkoutKey == id).ToListAsync();
+            return database.Table<Day>().Where(i => i.WorkoutKey == workoutId).ToListAsync();
         }
 
         public Task<List<Day>> GetDaysWithHigherIDAsync(Day day)
@@ -43,13 +43,12 @@ namespace Workout_Mobile_App.Data
 
         public Task<int> DeleteDayAsync(Day day)
         {
-
             return database.DeleteAsync(day);
         }
 
-        public Task<int> GetLastInsertedID(int id)
+        public Task<int> CountDays(int workoutId)
         {
-            return database.Table<Day>().Where(i => i.WorkoutKey == id).CountAsync();
+            return database.Table<Day>().Where(i => i.WorkoutKey == workoutId).CountAsync();
         }
     }
 }

@@ -1,22 +1,16 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Workout_Mobile_App.Views.WorkoutPage"
-             x:Name="contentPage">
-
-<ContentPage.ToolbarItems>
-        <ToolbarItem Text="Change name"
-                     Clicked="ChangeName"/>
-        <ToolbarItem Text="Add day"
-                     Clicked="AddDay"/>
+             x:Class="Workout_Mobile_App.Views.DayPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add exercise"
+                     Clicked="OnAddExerciseClicked"/>
     </ContentPage.ToolbarItems>
 
     <StackLayout>
         <CollectionView x:Name="collectionView"
                     Margin="20"
-                    SelectionMode="Single"
-                    SelectionChanged="DaySelected">
+                    SelectionMode="Single">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical"
                                ItemSpacing="10" />
@@ -28,19 +22,15 @@
                         <SwipeView.RightItems>
                             <SwipeItems>
                                 <SwipeItem Text="Delete"
-                                           BackgroundColor="#ed2424"
-                                           Clicked="DeleteDay"/>
+                                           BackgroundColor="#ed2424"/>
                             </SwipeItems>
                         </SwipeView.RightItems>
                         <StackLayout>
                             <Label BackgroundColor="White" Text="{Binding Name}" FontSize="Title" Padding="30,10,30,10"/>
-                            <Label BackgroundColor="White" Text="{Binding ID}" FontSize="Title" Padding="30,10,30,10"/>
-                            <Label BackgroundColor="White" Text="{Binding WorkoutKey}" FontSize="Title" Padding="30,10,30,10"/>
                         </StackLayout>
                     </SwipeView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
     </StackLayout>
-    
 </ContentPage>

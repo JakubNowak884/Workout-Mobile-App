@@ -20,6 +20,19 @@ namespace Workout_Mobile_App.Views
             collectionView.ItemsSource = await App.DatabaseWorkout.GetWorkoutsAsync();
         }
 
+        async void DeleteWorkout(object sender, EventArgs e)
+        {
+            SwipeItem item = sender as SwipeItem;
+            Workout workout = item.BindingContext as Workout;
+            List<Day> listOfDays = await App.DatabaseDay.GetDaysAsync(workout.ID);
+            foreach (Day day in listOfDays)
+            {
+                await App.DatabaseDay.DeleteDayAsync(day);
+            }
+            await App.DatabaseWorkout.DeleteWorkoutAsync(workout);
+            collectionView.ItemsSource = await App.DatabaseWorkout.GetWorkoutsAsync();
+        }
+
         async void OnAddClicked(object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync(nameof(WorkoutPage));
@@ -31,3 +44,6 @@ namespace Workout_Mobile_App.Views
         }
     }
 }
+//TODO
+//usuwanie ćwiczenia, ćwiczeń razem z dniem, ćwiczeń razem z workoutem
+//swoje cwiczenie: rodzaj progresu(standard, 5/3/1), domyślny progres w kg, nazwa, ciężar startowy

@@ -25,11 +25,13 @@
                         <SwipeView.RightItems>
                             <SwipeItems>
                                 <SwipeItem Text="Delete"
-                                           BackgroundColor="#ed2424"/>
+                                           BackgroundColor="#ed2424"
+                                           Clicked="DeleteWorkout"/>
                             </SwipeItems>
                         </SwipeView.RightItems>
                         <StackLayout>
                             <Label BackgroundColor="White" Text="{Binding Name}" FontSize="Title" Padding="30,10,30,10"/>
+                            <Label BackgroundColor="White" Text="{Binding ID}" FontSize="Title" Padding="30,10,30,10"/>
                         </StackLayout>
                     </SwipeView>
                 </DataTemplate>

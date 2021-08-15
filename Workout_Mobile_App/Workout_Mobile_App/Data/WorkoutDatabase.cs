@@ -41,11 +41,10 @@ namespace Workout_Mobile_App.Data
 
         public Task<int> DeleteWorkoutAsync(Workout workout)
         {
-            // Delete a note.
             return database.DeleteAsync(workout);
         }
 
-        public Task<int> GetLastInsertedID()
+        public Task<int> CountWorkouts()
         {
             return database.Table<Workout>().CountAsync();
         }

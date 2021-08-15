@@ -23,38 +23,45 @@ namespace Workout_Mobile_App.Views
             workout.Name = "New Workout";
             contentPage.Title = workout.Name;
             await App.DatabaseWorkout.SaveWorkoutAsync(workout);
-            int lastInsertID = await App.DatabaseWorkout.GetLastInsertedID();
-            CurrentWorkout = lastInsertID;
-            var note = new Day();
-            note.DayText = "Day 1";
-            note.WorkoutKey = CurrentWorkout;
-            await App.DatabaseDay.SaveDayAsync(note);
+            CurrentWorkout = workout.ID;
+            var day = new Day();
+            day.Name = "Day 1";
+            day.WorkoutKey = CurrentWorkout;
+            await App.DatabaseDay.SaveDayAsync(day);
             collectionView.ItemsSource = await App.DatabaseDay.GetDaysAsync(CurrentWorkout);
         }
 
-        async void DeleteWorkout(object sender, SelectionChangedEventArgs e)
+        async void DeleteDay(object sender, EventArgs e)
+        {
+            SwipeItem item = sender as SwipeItem;
+            Day day = item.BindingContext as Day;
+
+            List<Day> listOfDays = await App.DatabaseDay.GetDaysWithHigherIDAsync(day);
+            foreach (Day element in listOfDays)
+            {
+                int dayIndex = (int)char.GetNumericValue(element.Name.Last());
+                element.Name = "Day " + (dayIndex - 1).ToString();
+                await App.DatabaseDay.UpdateDayAsync(element);
+            }
+            await App.DatabaseDay.DeleteDayAsync(day);
+
+            collectionView.ItemsSource = await App.DatabaseDay.GetDaysAsync(CurrentWorkout);
+        }
+
+        async void DaySelected(object sender, SelectionChangedEventArgs e)
         {
             if (e.CurrentSelection != null)
             {
                 Day day = (Day)e.CurrentSelection.FirstOrDefault();
-
-                List<Day> listOfDays = await App.DatabaseDay.GetDaysWithHigherIDAsync(day);
-                foreach (Day element in listOfDays)
-                {
-                    int dayIndex = (int)char.GetNumericValue(element.DayText.Last());
-                    element.DayText = "Day " + (dayIndex - 1).ToString();
-                    await App.DatabaseDay.UpdateDayAsync(element);
-                }
-                await App.DatabaseDay.DeleteDayAsync(day);
+                await Shell.Current.GoToAsync($"{nameof(DayPage)}?{nameof(DayPage.ItemId)}={day.ID.ToString()}");
             }
-            collectionView.ItemsSource = await App.DatabaseDay.GetDaysAsync(CurrentWorkout);
         }
 
         async void AddDay(object sender, EventArgs e)
         {
             var note = new Day();
-            int lastInsertID = await App.DatabaseDay.GetLastInsertedID(CurrentWorkout);
-            note.DayText = "Day " + (lastInsertID + 1).ToString();
+            int lastInsertID = await App.DatabaseDay.CountDays(CurrentWorkout);
+            note.Name = "Day " + (lastInsertID + 1).ToString();
             note.WorkoutKey = CurrentWorkout;
             await App.DatabaseDay.SaveDayAsync(note);
             collectionView.ItemsSource = await App.DatabaseDay.GetDaysAsync(CurrentWorkout);

@@ -10,6 +10,7 @@ namespace Workout_Mobile_App
     {
         static WorkoutDatabase databaseWorkout;
         static DayDatabase databaseDay;
+        static ExerciseDatabase databaseExercise;
 
         // Create the database connection as a singleton.
         public static WorkoutDatabase DatabaseWorkout
@@ -33,6 +34,18 @@ namespace Workout_Mobile_App
                     databaseDay = new DayDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "DatabaseDay.db3"));
                 }
                 return databaseDay;
+            }
+        }
+
+        public static ExerciseDatabase DatabaseExercise
+        {
+            get
+            {
+                if (databaseExercise == null)
+                {
+                    databaseExercise = new ExerciseDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "DatabaseExercise.db3"));
+                }
+                return databaseExercise;
             }
         }
 
