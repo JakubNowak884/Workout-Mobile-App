@@ -27,6 +27,11 @@ namespace Workout_Mobile_App.Views
             List<Day> listOfDays = await App.DatabaseDay.GetDaysAsync(workout.ID);
             foreach (Day day in listOfDays)
             {
+                List<Exercise> listOfExercises = await App.DatabaseExercise.GetExercisesAsync(day.ID);
+                foreach (Exercise exercise in listOfExercises)
+                {
+                    await App.DatabaseExercise.DeleteExerciseAsync(exercise);
+                }
                 await App.DatabaseDay.DeleteDayAsync(day);
             }
             await App.DatabaseWorkout.DeleteWorkoutAsync(workout);
@@ -44,6 +49,3 @@ namespace Workout_Mobile_App.Views
         }
     }
 }
-//TODO
-//usuwanie ćwiczenia, ćwiczeń razem z dniem, ćwiczeń razem z workoutem
-//swoje cwiczenie: rodzaj progresu(standard, 5/3/1), domyślny progres w kg, nazwa, ciężar startowy

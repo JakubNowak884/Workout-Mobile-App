@@ -11,6 +11,7 @@ namespace Workout_Mobile_App
             Routing.RegisterRoute(nameof(WorkoutPage), typeof(WorkoutPage));
             Routing.RegisterRoute(nameof(DayPage), typeof(DayPage));
             Routing.RegisterRoute(nameof(ExercisePage), typeof(ExercisePage));
+            Routing.RegisterRoute(nameof(NewExercisePage), typeof(NewExercisePage));
         }
     }
 }

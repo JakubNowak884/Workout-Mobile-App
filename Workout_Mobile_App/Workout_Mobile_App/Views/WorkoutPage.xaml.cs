@@ -43,6 +43,12 @@ namespace Workout_Mobile_App.Views
                 element.Name = "Day " + (dayIndex - 1).ToString();
                 await App.DatabaseDay.UpdateDayAsync(element);
             }
+
+            List<Exercise> listOfExercises = await App.DatabaseExercise.GetExercisesAsync(day.ID);
+            foreach (Exercise exercise in listOfExercises)
+            {
+                await App.DatabaseExercise.DeleteExerciseAsync(exercise);
+            }
             await App.DatabaseDay.DeleteDayAsync(day);
 
             collectionView.ItemsSource = await App.DatabaseDay.GetDaysAsync(CurrentWorkout);

@@ -15,9 +15,9 @@ namespace Workout_Mobile_App.Data
             database.CreateTableAsync<Exercise>().Wait();
         }
 
-        public Task<List<Exercise>> GetExercisesAsync()
+        public Task<List<Exercise>> GetExercisesAsync(int dayId)
         {
-            return database.Table<Exercise>().ToListAsync();
+            return database.Table<Exercise>().Where(i => i.DayKey == dayId).ToListAsync();
         }
 
         public Task<Exercise> GetExerciseAsync(int id)

@@ -2,12 +2,39 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Workout_Mobile_App.Views.ExercisePage"
-             x:Name="contentPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+             Title="List of exercises">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="New exercise"
+                     Clicked="OnNewExerciseClicked"/>
+    </ContentPage.ToolbarItems>
+
+    <StackLayout>
+        <CollectionView x:Name="collectionView"
+                    Margin="20"
+                    SelectionMode="Single">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"
+                               ItemSpacing="10" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Edit"
+                                           BackgroundColor="#1766b0"/>
+                                <SwipeItem Text="Delete"
+                                           BackgroundColor="#ed2424"
+                                           Clicked="DeleteExercise"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <StackLayout>
+                            <Label BackgroundColor="White" Text="{Binding Name}" FontSize="Title" Padding="30,10,30,10"/>
+                        </StackLayout>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
 </ContentPage>

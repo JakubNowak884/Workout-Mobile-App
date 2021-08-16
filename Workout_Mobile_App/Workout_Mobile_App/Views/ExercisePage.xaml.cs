@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using Workout_Mobile_App.Models;
 using Xamarin.Forms;
 
@@ -18,12 +16,20 @@ namespace Workout_Mobile_App.Views
         {
             base.OnAppearing();
 
-            Exercise exercise = new Exercise();
-            exercise.Name = "New exercise";
-            await App.DatabaseExercise.SaveExerciseAsync(exercise);
+            collectionView.ItemsSource = await App.DatabaseExerciseDraft.GetDraftExercisesAsync();
+        }
 
-            BindingContext = exercise;
-            contentPage.Title = exercise.Name;
+        async void OnNewExerciseClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync(nameof(NewExercisePage));
+        }
+
+        async void DeleteExercise(object sender, EventArgs e)
+        {
+            SwipeItem item = sender as SwipeItem;
+            ExerciseDraft exercise = item.BindingContext as ExerciseDraft;
+            await App.DatabaseExerciseDraft.DeleteDraftExerciseAsync(exercise);
+            collectionView.ItemsSource = await App.DatabaseExerciseDraft.GetDraftExercisesAsync();
         }
     }
 }

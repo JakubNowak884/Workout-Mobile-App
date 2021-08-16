@@ -24,7 +24,10 @@ namespace Workout_Mobile_App.Views
         {
             base.OnAppearing();
 
-            collectionView.ItemsSource = await App.DatabaseExercise.GetExercisesAsync();
+            Day day = await App.DatabaseDay.GetDayAsync(CurrentDay);
+            contentPage.Title = day.Name;
+
+            collectionView.ItemsSource = await App.DatabaseExercise.GetExercisesAsync(CurrentDay);
         }
         void LoadDay(string itemId)
         {
