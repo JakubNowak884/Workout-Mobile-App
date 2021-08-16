@@ -40,7 +40,11 @@ namespace Workout_Mobile_App.Views
 
         async void OnAddClicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync(nameof(WorkoutPage));
+            Workout workout = new Workout();
+            workout.Name = "New Workout";
+            await App.DatabaseWorkout.SaveWorkoutAsync(workout);
+
+            await Shell.Current.GoToAsync($"{nameof(WorkoutPage)}?{nameof(WorkoutPage.ItemId)}={workout.ID.ToString()}");
         }
 
         async void WorkoutSelected(object sender, SelectionChangedEventArgs e)

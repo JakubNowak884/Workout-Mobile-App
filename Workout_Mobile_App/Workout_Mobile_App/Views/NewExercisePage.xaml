@@ -18,5 +18,9 @@
                FontSize="Large"/>
         <Button Text="{Binding Progress, StringFormat='{0:N} kg'}"
                 Clicked="OnChangeProgressClicked"/>
+        <Label Text="Deload:"
+               FontSize="Large"/>
+        <Button Text="{Binding Deload, StringFormat='{0:N} %'}"
+                Clicked="OnChangeDeloadClicked"/>
     </StackLayout>
 </ContentPage>

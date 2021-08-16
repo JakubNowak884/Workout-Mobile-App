@@ -42,7 +42,7 @@ namespace Workout_Mobile_App.Views
         }
         async void OnAddExerciseClicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync(nameof(ExercisePage));
+            await Shell.Current.GoToAsync($"{nameof(ExercisePage)}?{nameof(ExercisePage.ItemId)}={CurrentDay.ToString()}");
         }
     }
 }

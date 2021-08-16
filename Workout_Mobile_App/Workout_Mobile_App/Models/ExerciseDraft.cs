@@ -6,7 +6,7 @@ namespace Workout_Mobile_App.Models
     public enum TypeOfProgress
     {
         Standard,
-        JimWendler
+        Jim_Wendler
     }
     public class ExerciseDraft
     {
@@ -15,5 +15,6 @@ namespace Workout_Mobile_App.Models
         public string Name { get; set; }
         public TypeOfProgress Type { get; set; }
         public float Progress { get; set; }
+        public float Deload { get; set; }
     }
 }

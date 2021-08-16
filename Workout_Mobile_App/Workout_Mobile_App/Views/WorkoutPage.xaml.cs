@@ -7,8 +7,16 @@ using Xamarin.Forms;
 
 namespace Workout_Mobile_App.Views
 {
+    [QueryProperty(nameof(ItemId), nameof(ItemId))]
     public partial class WorkoutPage : ContentPage
     {
+        public string ItemId
+        {
+            set
+            {
+                LoadWorkout(value);
+            }
+        }
         public int CurrentWorkout;
         public WorkoutPage()
         {
@@ -19,15 +27,9 @@ namespace Workout_Mobile_App.Views
         {
             base.OnAppearing();
 
-            var workout = new Workout();
-            workout.Name = "New Workout";
+            Workout workout = await App.DatabaseWorkout.GetWorkoutAsync(CurrentWorkout);
             contentPage.Title = workout.Name;
-            await App.DatabaseWorkout.SaveWorkoutAsync(workout);
-            CurrentWorkout = workout.ID;
-            var day = new Day();
-            day.Name = "Day 1";
-            day.WorkoutKey = CurrentWorkout;
-            await App.DatabaseDay.SaveDayAsync(day);
+
             collectionView.ItemsSource = await App.DatabaseDay.GetDaysAsync(CurrentWorkout);
         }
 
@@ -71,6 +73,17 @@ namespace Workout_Mobile_App.Views
             note.WorkoutKey = CurrentWorkout;
             await App.DatabaseDay.SaveDayAsync(note);
             collectionView.ItemsSource = await App.DatabaseDay.GetDaysAsync(CurrentWorkout);
+        }
+        void LoadWorkout(string itemId)
+        {
+            try
+            {
+                CurrentWorkout = Convert.ToInt32(itemId);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Failed to load workout.");
+            }
         }
         async void ChangeName(object sender, EventArgs e)
         {

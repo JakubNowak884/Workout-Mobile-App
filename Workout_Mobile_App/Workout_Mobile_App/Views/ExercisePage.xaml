@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Workout_Mobile_App.Views.ExercisePage"
+             x:Name="contentPage"
              Title="List of exercises">
+    
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="New exercise"
                      Clicked="OnNewExerciseClicked"/>
@@ -11,7 +13,8 @@
     <StackLayout>
         <CollectionView x:Name="collectionView"
                     Margin="20"
-                    SelectionMode="Single">
+                    SelectionMode="Single"
+                    SelectionChanged="OnExerciseSelected">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical"
                                ItemSpacing="10" />
@@ -31,6 +34,9 @@
                         </SwipeView.RightItems>
                         <StackLayout>
                             <Label BackgroundColor="White" Text="{Binding Name}" FontSize="Title" Padding="30,10,30,10"/>
+                            <Label BackgroundColor="White" Text="{Binding Type, StringFormat='Type of progress: {0:N}'}" FontSize="Medium" Padding="30,10,30,10"/>
+                            <Label BackgroundColor="White" Text="{Binding Progress, StringFormat='Progress: {0:N} kg'}" FontSize="Medium" Padding="30,10,30,10"/>
+                            <Label BackgroundColor="White" Text="{Binding Deload, StringFormat='Deload {0:N}%'}" FontSize="Medium" Padding="30,10,30,10"/>
                         </StackLayout>
                     </SwipeView>
                 </DataTemplate>

@@ -78,5 +78,30 @@ namespace Workout_Mobile_App.Views
             await App.DatabaseExerciseDraft.UpdateDraftExerciseAsync(exercise);
             BindingContext = await App.DatabaseExerciseDraft.GetDraftExerciseAsync(exercise.ID);
         }
+
+        async void OnChangeDeloadClicked(object sender, EventArgs e)
+        {
+            string result = await DisplayPromptAsync("Deload (percentage)", "Type new deload:");
+            ExerciseDraft exercise = (ExerciseDraft)BindingContext;
+            try
+            {
+                exercise.Deload = float.Parse(result);
+            }
+            catch (ArgumentNullException)
+            {
+                Console.WriteLine("Typed value is empty.");
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Typed value is not a number.");
+            }
+            catch (OverflowException)
+            {
+                Console.WriteLine("Typed value is out of range.");
+            }
+
+            await App.DatabaseExerciseDraft.UpdateDraftExerciseAsync(exercise);
+            BindingContext = await App.DatabaseExerciseDraft.GetDraftExerciseAsync(exercise.ID);
+        }
     }
 }
