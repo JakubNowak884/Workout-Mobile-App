@@ -8,6 +8,7 @@ namespace Workout_Mobile_App
         public AppShell()
         {
             InitializeComponent();
+            Routing.RegisterRoute(nameof(WorkoutEntryPage), typeof(WorkoutEntryPage));
             Routing.RegisterRoute(nameof(WorkoutPage), typeof(WorkoutPage));
             Routing.RegisterRoute(nameof(DayPage), typeof(DayPage));
             Routing.RegisterRoute(nameof(ExercisePage), typeof(ExercisePage));

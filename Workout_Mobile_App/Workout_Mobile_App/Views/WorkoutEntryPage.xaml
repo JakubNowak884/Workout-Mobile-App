@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Workout_Mobile_App.Views.WorkoutEntryPage"
+             x:Name="contentPage">
+
+    <StackLayout>
+        <Label Text="{Binding Text}"
+               FontSize="Large"/>
+        <Button Text="Continue with default progress"
+                Clicked="OnContinueWithDefaultProgressClicked"/>
+        <Button Text="Continue with alternative progress"
+                Clicked="OnContinueWithAlternativeProgressClicked"/>
+        <Button Text="Continue without progress"
+                Clicked="OnContinueWithoutProgressClicked"/>
+        <Button Text="Deload"
+                Clicked="OnDeloadClicked"/>
+    </StackLayout>
+</ContentPage>

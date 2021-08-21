@@ -33,10 +33,10 @@
                             </SwipeItems>
                         </SwipeView.RightItems>
                         <StackLayout>
-                            <Label BackgroundColor="White" Text="{Binding Name}" FontSize="Title" Padding="30,10,30,10"/>
-                            <Label BackgroundColor="White" Text="{Binding Type, StringFormat='Type of progress: {0:N}'}" FontSize="Medium" Padding="30,10,30,10"/>
-                            <Label BackgroundColor="White" Text="{Binding Progress, StringFormat='Progress: {0:N} kg'}" FontSize="Medium" Padding="30,10,30,10"/>
-                            <Label BackgroundColor="White" Text="{Binding Deload, StringFormat='Deload {0:N}%'}" FontSize="Medium" Padding="30,10,30,10"/>
+                            <Label BackgroundColor="White" Text="{Binding Name}" FontSize="Title"/>
+                            <Label BackgroundColor="White" Text="{Binding Type, StringFormat='Type of progress: {0:N}'}" FontSize="Medium"/>
+                            <Label BackgroundColor="White" Text="{Binding Progress, StringFormat='Progress: {0:N} kg'}" FontSize="Medium"/>
+                            <Label BackgroundColor="White" Text="{Binding Deload, StringFormat='Deload {0:N}%'}" FontSize="Medium"/>
                         </StackLayout>
                     </SwipeView>
                 </DataTemplate>

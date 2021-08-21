@@ -49,7 +49,11 @@ namespace Workout_Mobile_App.Views
 
         async void WorkoutSelected(object sender, SelectionChangedEventArgs e)
         {
-            bool answer = await DisplayAlert("Question?", "Would you like to play a game", "Yes", "No");
+            if (e.CurrentSelection != null)
+            {
+                Workout workout = (Workout)e.CurrentSelection.FirstOrDefault();
+                await Shell.Current.GoToAsync($"{nameof(WorkoutEntryPage)}?{nameof(WorkoutEntryPage.ItemId)}={workout.ID.ToString()}");
+            }
         }
     }
 }

@@ -6,7 +6,8 @@ namespace Workout_Mobile_App.Models
     public enum TypeOfProgress
     {
         Standard,
-        Jim_Wendler
+        Jim_Wendler,
+        Jim_Wendler_Plus_Sidework
     }
     public class ExerciseDraft
     {
