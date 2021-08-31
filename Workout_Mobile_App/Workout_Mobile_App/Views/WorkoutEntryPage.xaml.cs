@@ -13,6 +13,7 @@ namespace Workout_Mobile_App.Views
     {
         private string text = string.Empty;
         private string textTitle = string.Empty;
+        MainViewModel test;
         public string ItemId
         {
             set
@@ -107,7 +108,9 @@ namespace Workout_Mobile_App.Views
                 default:
                     break;
             }
-            BindingContext = text;
+            test = new MainViewModel();
+            test.Text = text;
+            BindingContext = test;
             contentPage.Title = textTitle;
         }
 
@@ -222,7 +225,8 @@ namespace Workout_Mobile_App.Views
                 default:
                     break;
             }
-            BindingContext = text;
+            test.Text = text;
+            BindingContext = test;
             contentPage.Title = textTitle;
             await App.DatabaseWorkout.UpdateWorkoutAsync(workout);
         }
@@ -238,7 +242,7 @@ namespace Workout_Mobile_App.Views
                     SetBindingContext();
                     break;
                 case TypeOfProgress.Jim_Wendler:
-                    if (workout.Week % 4 == 0)
+                    if (((workout.Week % 4) + 1) == 0)
                     {
                         CurrentExercise.Weight += CurrentExercise.Progress;
                         await App.DatabaseExercise.UpdateExerciseAsync(CurrentExercise);
@@ -251,7 +255,7 @@ namespace Workout_Mobile_App.Views
                     }
                     break;
                 case TypeOfProgress.Jim_Wendler_Plus_Sidework:
-                    if (workout.Week % 4 == 0)
+                    if (((workout.Week % 4) + 1) == 0)
                     {
                         CurrentExercise.Weight += CurrentExercise.Progress;
                         await App.DatabaseExercise.UpdateExerciseAsync(CurrentExercise);
@@ -296,7 +300,7 @@ namespace Workout_Mobile_App.Views
                     SetBindingContext();
                     break;
                 case TypeOfProgress.Jim_Wendler:
-                    if (workout.Week % 4 == 0)
+                    if (((workout.Week % 4) + 1) == 0)
                     {
                         result = await DisplayPromptAsync("Progress (in kg)", "Type alternative progress:");
                         try
@@ -325,7 +329,7 @@ namespace Workout_Mobile_App.Views
                     }
                     break;
                 case TypeOfProgress.Jim_Wendler_Plus_Sidework:
-                    if (workout.Week % 4 == 0)
+                    if (((workout.Week % 4) + 1)== 0)
                     {
                         result = await DisplayPromptAsync("Progress (in kg)", "Type alternative progress:");
                         try
@@ -375,7 +379,7 @@ namespace Workout_Mobile_App.Views
                     SetBindingContext();
                     break;
                 case TypeOfProgress.Jim_Wendler:
-                    if (workout.Week % 4 == 0)
+                    if (((workout.Week % 4) + 1) == 0)
                     {
                         CurrentExercise.Weight *= CurrentExercise.Deload * 0.01f;
                         await App.DatabaseExercise.UpdateExerciseAsync(CurrentExercise);
@@ -388,7 +392,7 @@ namespace Workout_Mobile_App.Views
                     }
                     break;
                 case TypeOfProgress.Jim_Wendler_Plus_Sidework:
-                    if (workout.Week % 4 == 0)
+                    if (((workout.Week % 4) + 1) == 0)
                     {
                         CurrentExercise.Weight *= CurrentExercise.Deload * 0.01f;
                         await App.DatabaseExercise.UpdateExerciseAsync(CurrentExercise);
